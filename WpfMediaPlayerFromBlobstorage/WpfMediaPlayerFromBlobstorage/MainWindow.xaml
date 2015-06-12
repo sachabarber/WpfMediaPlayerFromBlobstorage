@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfMediaPlayerFromBlobstorage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+    <Grid>
+        <DockPanel LastChildFill="True">
+           
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Button x:Name="btnUpload" 
+                        Click="BtnUpload_OnClick" 
+                        Content="Pick MP4 file to upload" 
+                        Width="Auto" 
+                        Margin="5"
+                        Height="23"/>
+                <StackPanel Orientation="Horizontal" Margin="50,5,5,5">
+                    <StackPanel x:Name="controls" 
+                                HorizontalAlignment="Center" 
+                                Orientation="Horizontal">
+
+                        <Button x:Name="btnPlay" 
+                                Height="23" 
+                                Content="Play" 
+                                VerticalAlignment="Center"
+                                Margin="5"
+                                Click="BtnPlay_OnClick" />
+                        <Button x:Name="btnPause" 
+                                Height="23" 
+                                Content="Pause" 
+                                VerticalAlignment="Center"
+                                Margin="5"
+                                Click="BtnPause_OnClick" />
+                        <Button x:Name="btnStop" 
+                                Height="23" 
+                                Content="Stop" 
+                                VerticalAlignment="Center"
+                                Click="BtnStop_OnClick"
+                                Margin="5" />
+
+                        <TextBlock VerticalAlignment="Center" 
+                                   Text="Seek To"
+                                   Margin="5" />
+                        <Slider Name="timelineSlider" 
+                                Margin="5" 
+                                Height="23"
+                                VerticalAlignment="Center"
+                                Width="70"
+                                ValueChanged="SeekToMediaPosition" />
+
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <MediaElement x:Name="player" 
+                          Volume="1"
+                          LoadedBehavior="Manual"
+                          UnloadedBehavior="Manual"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Stretch"
+                          Margin="10"
+                          MediaOpened="Element_MediaOpened" 
+                          MediaEnded="Element_MediaEnded"/>
+        </DockPanel>
+    </Grid>
+</Window>
